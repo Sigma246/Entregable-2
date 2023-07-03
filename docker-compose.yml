@@ -1,0 +1,30 @@
+version: '2'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - REDISCLOUD_URL=redis://redis:6379
+      - MONGODB_URI=mongodb://mongo/ArcApp?maxPoolSize=20
+    ports: 
+      - 3000:3000
+      - 5858:5858
+    volumes:
+      - .:/usr/src/arc-api
+      - /usr/src/arc-api/node_modules
+    links:
+      - redis
+      - mongo
+    depends_on:
+      - redis
+      - mongo
+  redis:
+    image: 'redis'
+    command: redis-server
+    ports: 
+      - 6379:6379
+  mongo:
+    image: 'mongo'
+    ports:
+      - "27017:27017"
