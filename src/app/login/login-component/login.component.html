@@ -1,0 +1,28 @@
+
+<div class="columns mt-6">
+  <div class="column has-text-centered">
+    <h1>LOGIN</h1>
+  </div>
+</div>
+<div class="columns is-vcentered">
+  <div class="column has-text-centered">
+    
+    <form [formGroup]="formLogin" (ngSubmit)="Login()" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingresar Nombre</mat-label>
+        <input  type="text" formControlName="nombre" matInput placeholder="Ingresar Nombre" >
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingresar Email</mat-label>
+        <input  type="email" formControlName="email" matInput placeholder="Ingresar Email">
+      </mat-form-field>
+
+      <div class="columns">
+        <div class="column">
+          <button [disabled]="!formLogin.valid" type="submit" mat-raised-button color="primary">INGRESAR</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

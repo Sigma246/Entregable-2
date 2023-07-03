@@ -1,0 +1,51 @@
+<div class="columns">
+    <div class="column is-6">
+        <div class="columns">
+          <div class="column">
+              <app-busqueda></app-busqueda>
+          </div>
+        </div>
+        <br>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Position Column -->
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <br>
+        <div class="columns is-centered">
+          <div class="column">
+            <listado-paginator-configurable></listado-paginator-configurable>
+          </div>
+        </div>
+    </div>
+    <div class="column mt-6 pt-6 is-6 has-text-centered">
+        <form [formGroup]="formNewUser" (ngSubmit)="createUser()" class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Ingresar Nombre</mat-label>
+              <input  type="text" formControlName="nombre" matInput placeholder="Ingresar Nombre" >
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <mat-label>Ingresar Email</mat-label>
+              <input  type="email" formControlName="email" matInput placeholder="Ingresar Email">
+            </mat-form-field>
+      
+            <div class="columns">
+              <div class="column">
+                <button [disabled]="!formNewUser.valid" type="submit" mat-raised-button color="primary">INGRESAR</button>
+              </div>
+            </div>
+        </form>
+    </div>
+</div>

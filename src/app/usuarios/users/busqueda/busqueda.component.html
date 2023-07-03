@@ -1,0 +1,7 @@
+<form [formGroup]="form" class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input formControlName="nombre" matInput #message maxlength="20" placeholder="Burcar Nombre">
+    <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
+  </mat-form-field>
+</form>
